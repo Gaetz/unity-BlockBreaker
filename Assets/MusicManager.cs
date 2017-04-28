@@ -6,12 +6,12 @@ public class MusicManager : MonoBehaviour {
 
     static MusicManager instance = null;
 
-	// Use this for initialization
-	void Start () {
-        if(instance != null)
+    private void Awake()
+    {
+        if (instance != null)
         {
             Destroy(gameObject);
-        } 
+        }
         else
         {
             instance = this;
