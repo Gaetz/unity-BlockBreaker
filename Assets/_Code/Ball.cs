@@ -7,7 +7,7 @@ public class Ball : MonoBehaviour {
     /// <summary>
     /// Reference to paddle
     /// </summary>
-    public Paddle Paddle;
+    Paddle paddle;
 
     /// <summary>
     /// Distance to paddle
@@ -21,7 +21,8 @@ public class Ball : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        paddleToBall = this.transform.position - Paddle.transform.position;
+        paddle = GameObject.FindObjectOfType<Paddle>();
+        paddleToBall = this.transform.position - paddle.transform.position;
     }
 	
 	// Update is called once per frame
@@ -29,7 +30,7 @@ public class Ball : MonoBehaviour {
         if(!isBallLaunched)
         {
             // Ball on paddle
-            this.transform.position = Paddle.transform.position + paddleToBall;
+            this.transform.position = paddle.transform.position + paddleToBall;
             // Ball lauched on click
             if (Input.GetMouseButtonDown(0))
             {

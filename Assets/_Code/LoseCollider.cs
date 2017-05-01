@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class LoseCollider : MonoBehaviour {
 
-    public LevelManager LevelManager;
+    LevelManager levelManager;
+
+    void Start()
+    {
+        levelManager = GameObject.FindObjectOfType<LevelManager>();
+    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        LevelManager.LoadLevel("Loss");
+        levelManager.LoadLevel("Loss");
     }
 }
