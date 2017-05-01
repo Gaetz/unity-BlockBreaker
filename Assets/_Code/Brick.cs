@@ -11,6 +11,11 @@ public class Brick : MonoBehaviour {
     public Sprite[] HitSprites;
 
     /// <summary>
+    /// Sound when brick hit
+    /// </summary>
+    public AudioClip Crack;
+
+    /// <summary>
     /// Number of remaining bricks
     /// (Static are not shown in editor)
     /// </summary>
@@ -49,9 +54,10 @@ public class Brick : MonoBehaviour {
     {
         // Collision effect if brick is breakable
         if (isBreakable)
+        {
+            AudioSource.PlayClipAtPoint(Crack, this.transform.position);
             HandleHit();
-        // Win condition
-        //Win();
+        }
     }
 
     void HandleHit()
