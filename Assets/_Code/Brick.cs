@@ -16,6 +16,11 @@ public class Brick : MonoBehaviour {
     public AudioClip Crack;
 
     /// <summary>
+    /// Smoke particle system for brick destruction
+    /// </summary>
+    public GameObject Smoke;
+
+    /// <summary>
     /// Number of remaining bricks
     /// (Static are not shown in editor)
     /// </summary>
@@ -69,6 +74,7 @@ public class Brick : MonoBehaviour {
         {
             BreakableCount = BreakableCount - 1;
             levelManager.BrickDestroyedMessage();
+            TriggerSmoke();
             Destroy(gameObject);
         }
         // If not destroyed alter sprite
@@ -91,6 +97,16 @@ public class Brick : MonoBehaviour {
         {
             Debug.LogError("Missing brick sprite number " + (timesHit - 1));
         }
+    }
+
+    private void TriggerSmoke()
+    {
+        GameObject smokePuff = Instantiate(Smoke, gameObject.transform.position, Quaternion.identity);
+
+        ParticleSystem smokePs = smokePuff.GetComponent<ParticleSystem>();
+        var col = smokePs.colorOverLifetime;
+        col.enabled = true;
+        col.color = GetComponent<SpriteRenderer>().color;
     }
 
     void Win()
