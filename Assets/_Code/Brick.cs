@@ -83,8 +83,14 @@ public class Brick : MonoBehaviour {
     /// </summary>
     private void ChangeSprite()
     {
-        if(HitSprites[timesHit - 1])
+        if (HitSprites[timesHit - 1] != null)
+        {
             GetComponent<SpriteRenderer>().sprite = HitSprites[timesHit - 1];
+        }
+        else
+        {
+            Debug.LogError("Missing brick sprite number " + (timesHit - 1));
+        }
     }
 
     void Win()
