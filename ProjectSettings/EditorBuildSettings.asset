@@ -12,8 +12,11 @@ EditorBuildSettings:
     path: Assets/_Scenes/Level01.unity
     guid: 079ec9540767c254080cde53098e0168
   - enabled: 1
-    path: Assets/_Scenes/Loss.unity
-    guid: b7bf1f4b8c0881f429b20a9d6f97d3ac
+    path: Assets/_Scenes/Level02.unity
+    guid: 2742835319354534ebff64eee2cd9e8b
   - enabled: 1
     path: Assets/_Scenes/Victory.unity
     guid: 7877db08196ecc24b911c1ffed675109
+  - enabled: 1
+    path: Assets/_Scenes/Loss.unity
+    guid: b7bf1f4b8c0881f429b20a9d6f97d3ac
