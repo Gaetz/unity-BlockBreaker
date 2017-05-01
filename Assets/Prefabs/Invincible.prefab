@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 61296562909878928}
   - component: {fileID: 114491140889626438}
   m_Layer: 0
-  m_Name: 1HitBlock
-  m_TagString: Breakable
+  m_Name: Invicible
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: aa5ab157c3e0c004d8c2dc84eaad178c, type: 3}
-  m_Color: {r: 1, g: 0.9310346, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
