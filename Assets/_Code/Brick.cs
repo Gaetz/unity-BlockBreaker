@@ -11,6 +11,12 @@ public class Brick : MonoBehaviour {
     public Sprite[] HitSprites;
 
     /// <summary>
+    /// Number of remaining bricks
+    /// (Static are not shown in editor)
+    /// </summary>
+    public static int BreakableCount = 0;
+
+    /// <summary>
     /// Times the brick has been hit
     /// </summary>
     private int timesHit;
@@ -18,12 +24,20 @@ public class Brick : MonoBehaviour {
     /// <summary>
     /// Reference to level manager
     /// </summary>
-    LevelManager levelManager;
+    private LevelManager levelManager;
+
+    /// <summary>
+    /// True if brick is breakable
+    /// </summary>
+    private bool isBreakable;
 
 	// Use this for initialization
 	void Start () {
         timesHit = 0;
         levelManager = GameObject.FindObjectOfType<LevelManager>();
+        isBreakable = this.tag == "Breakable";
+        if (isBreakable)
+            BreakableCount = BreakableCount + 1;
     }
 	
 	// Update is called once per frame
@@ -34,7 +48,7 @@ public class Brick : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collision)
     {
         // Collision effect if brick is breakable
-        if (this.tag == "Breakable")
+        if (isBreakable)
             HandleHit();
         // Win condition
         //Win();
@@ -47,6 +61,8 @@ public class Brick : MonoBehaviour {
         // Destruction
         if (timesHit >= maxHits)
         {
+            BreakableCount = BreakableCount - 1;
+            levelManager.BrickDestroyedMessage();
             Destroy(gameObject);
         }
         // If not destroyed alter sprite
